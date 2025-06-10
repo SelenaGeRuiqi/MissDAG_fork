@@ -200,6 +200,18 @@ def main():
     _logger = logging.getLogger(__name__)
     _logger.info("Finished setting up the logger.")
 
+    # Log MVPC parameters if using MVPC data
+    if getattr(args, 'use_mvpc_data', False):
+        _logger.info("=== MVPC PARAMETERS ===")
+        _logger.info(f"MVPC Base Directory: {args.mvpc_base_dir}")
+        _logger.info(f"MVPC Subfolder: {args.mvpc_subfolder}")
+        _logger.info(f"MVPC Data Path: {args.mvpc_data_path}")
+        _logger.info(f"MVPC Prior Path: {args.mvpc_prior_path}")
+        _logger.info(f"MVPC Ground Truth Path: {getattr(args, 'mvpc_ground_truth_path', 'None')}")
+        _logger.info(f"Prior Weight: {args.prior_weight}")
+        _logger.info(f"Prior Conversion Method: {args.prior_conversion}")
+        _logger.info("=======================")
+
     # Get and save system info
     system_info = get_system_info()
     if system_info is not None:
@@ -321,16 +333,8 @@ def main():
             _logger.info("MVPC prior result:{0}".format(prior_result))
     else:
         _logger.warning("No valid ground truth available for evaluation.")
-        
-    np.save(os.path.join(output_dir, 'B_estimated.npy'), B_est)
-    np.save(os.path.join(output_dir, 'B_processed.npy'), B_processed_bin)
-    if getattr(args, 'use_mvpc_data', False):
-        np.save(os.path.join(output_dir, 'mvpc_prior.npy'), dataset.prior_matrix)
-        np.save(os.path.join(output_dir, 'mvpc_prior_converted.npy'), dataset.converted_prior)
-        if hasattr(dataset, 'B_bin'):
-            np.save(os.path.join(output_dir, 'ground_truth.npy'), dataset.B_bin)
     
-    _logger.info(f"Results saved to {output_dir}")
+    _logger.info(f"Training log saved to {output_dir}/training.log")
 
 if __name__ == '__main__':
     main()
