@@ -1,3 +1,5 @@
 /.DS_Store
 output/
 mvpc_dataset/
+result_npy/
+result/
