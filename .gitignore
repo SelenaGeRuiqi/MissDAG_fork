@@ -1,1 +1,4 @@
 /.DS_Store
+result_npy/
+output/
+mvpc_dataset/

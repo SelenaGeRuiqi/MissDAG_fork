@@ -1,5 +1,0 @@
-"Num_Samples","Mode","Num_Variables","Num_Extra_Edges","Num_Missing_Vars_Affected","Seed","Method","SHD","Precision","Recall","F1_Score"
-1000,"mar",20,5,10,777,"CompleteData_PC",13,0.956521739130435,0.758620689655172,0.846153846153846
-1000,"mar",20,5,10,777,"TestWise_PC",14,1,0.724137931034483,0.84
-1000,"mar",20,5,10,777,"MVPC_PermC",14,1,0.724137931034483,0.84
-1000,"mar",20,5,10,777,"MVPC_DRW",14,1,0.724137931034483,0.84
